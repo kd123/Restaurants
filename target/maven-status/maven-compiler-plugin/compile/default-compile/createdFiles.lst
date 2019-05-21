@@ -1,0 +1,13 @@
+com/restaurant/web/UserController.class
+com/restaurant/service/SecurityServiceImpl.class
+com/restaurant/service/UserDetailsServiceImpl.class
+com/restaurant/service/SecurityService.class
+com/restaurant/WebApplication.class
+com/restaurant/model/Role.class
+com/restaurant/service/UserService.class
+com/restaurant/repository/UserRepository.class
+com/restaurant/repository/RoleRepository.class
+com/restaurant/WebSecurityConfig.class
+com/restaurant/validator/UserValidator.class
+com/restaurant/service/UserServiceImpl.class
+com/restaurant/model/User.class

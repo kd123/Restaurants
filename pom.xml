@@ -6,7 +6,7 @@
     <artifactId>restaurant</artifactId>
     <name>restaurant</name>
     <description>restaurant</description>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
