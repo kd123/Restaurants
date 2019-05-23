@@ -3,15 +3,17 @@ package com.restaurant.model;
 /**
  * @author Kuldeep Gupta
  */
-import javax.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.Set;
 
-@Entity
-@Table(name = "user")
+
+@Document(collection = "user")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
     private String username;
 
@@ -20,14 +22,13 @@ public class User {
     @Transient
     private String passwordConfirm;
 
-    @ManyToMany
     private Set<Role> roles;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
