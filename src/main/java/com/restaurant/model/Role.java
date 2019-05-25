@@ -1,26 +1,28 @@
 package com.restaurant.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.*;
 import java.util.Set;
 
 /**
  * @author Kuldeep Gupta
  */
-@Document(collection = "role")
+@Entity
+@Table(name = "role")
 public class Role {
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String name;
 
+    @ManyToMany(mappedBy = "roles")
     private Set<User> users;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

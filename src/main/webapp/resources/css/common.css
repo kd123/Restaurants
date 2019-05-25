@@ -51,17 +51,98 @@ body {
   position: relative;
 }
 
-/* style glyph */
-.inner-addon .glyphicon {
-  position: absolute;
-  padding: 10px;
-  padding-top:35px;
-  pointer-events: none;
+.container.searchContainer{
+     width: 90%;
 }
-/* align glyph */
-.left-addon .glyphicon  { left:  0px;}
-.right-addon .glyphicon { right: 0px;}
+.searchIcon{
+    position: absolute;
+    top: 39px;
+    right: 14px;
+    color: #666;
+}
+.form-inline .form-control.searchInp{
+    width: 100%;
+    margin-top:10px;
+}
+.otherInfo{
+    margin-top:10px;
+}
+.otherInfo div{
+    line-height:35px;
+}
 
-/* add padding  */
-.left-addon input  { padding-left:  30px; }
-.right-addon input { padding-right: 30px; }
+.name{
+    font-size: initial;
+    color: #cb202d;
+    font-weight: 600;
+    }
+.cuisines{
+        font-style: italic;
+        font-size: 15px;
+        color: darkslategray;
+}
+
+.rating{
+    color: white;
+    width: 40px;
+    height: 33px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-top: 2px;
+}
+.votes{
+    line-height: 5px;
+    color: lightslategray;
+    font-size: 12px;
+}
+
+ .col-md-4.res_details{
+        width: 18%;
+}
+
+
+
+fieldset, label { margin: 0; padding: 0; }
+body{ margin: 20px; }
+h1 { font-size: 1.5em; margin: 10px; }
+
+/****** Style Star Rating Widget *****/
+
+.rating {
+  border: none;
+  float: left;
+}
+
+.rating > input { display: none; }
+.rating > label:before {
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before {
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label {
+  color: #ddd;
+ float: right;
+}
+
+/***** Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  }

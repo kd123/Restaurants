@@ -14,7 +14,10 @@
   </head>
 
   <body>
-
+    <div class="panel panel-default">
+          <div class="panel-heading"style="text-align: center;background-color: lightsteelblue;color: maroon;font-size: initial;">Welcome To KD Restaurant
+          </div>
+    </div>
     <div class="container">
 
         <form:form method="POST" modelAttribute="userForm" class="form-signin">

@@ -1,68 +1,82 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Create an account</title>
+    <title>Search Restaurant</title>
     <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
      <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
-     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
      <div class="panel panel-default">
      			<div class="panel-heading"style="text-align: center;background-color: lightsteelblue;color: maroon;font-size: initial;">Welcome To KD Restaurant
      			<a onclick="document.forms['logoutForm'].submit()" style="float:right;color: red">Logout</a></div>
-
-    <c:if test="${pageContext.request.userPrincipal.name != null}">
-        <form id="logoutForm" method="POST" action="${contextPath}/logout">
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        </form>
-          		</div>
-  <div class="container">
+        <c:if test="${pageContext.request.userPrincipal.name != null}">
+            <form id="logoutForm" method="POST" action="${contextPath}/logout">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            </form>
+        </c:if>
+     </div>
+  <div class="container searchContainer">
      		<div class="panel panel-default">
      			<div class="panel-heading">View/Search Restaurant</div>
      			<div class="panel-body">
-     						<div class="panel-body" style="padding-top: 0">
-     							<div class="row">
-     								<div class="form-group col-lg-2">
-     									<div class="inner-addon left-addon">
-     										<label for="searchId" class="control-label" style="font-size: xx-small;">Searching for Restaurant</label>
-     										 <i class="glyphicon glyphicon-search"></i>
-     										<input type="text" class="form-control" id="searchId"
-     											name="search_restaurant" placeholder="Search restaurant,cuisines...">
-     									</div>
-     								</div>
+                    <div id="view-org-msg"></div>
+                    <div id="view-org-form">
+                        <form class="form-inline ajax" action="restaurant/search"
+                                            method="get" data-error="#view-org-msg"
+                                            data-spinner="#form-spinner" data-replace="#restaurant-search-results">
+                                <div class="panel-body" style="padding-top: 0">
+                                    <div class="row">
+                                        <div class="form-group col-md-3">
+                                            <div class="inner-addon left-addon">
+                                                <label for="searchId" class="control-label" style="font-size: xx-small;">Searching for Restaurant</label>
+                                                <input type="text" class="form-control searchInp" id="searchId"
+                                                    name="search_restaurant" placeholder="Search restaurant,cuisines...">
 
-     							</div>
-     						</div>
+                                                <i class="fa fa-search searchIcon" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div id="form-spinner"></div>
+                        </form>
+                    </div>
      			</div>
      		</div>
-
-    </c:if>
+     	<div id="restaurant-search-results" tabindex="1"></div>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
       <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
   <script>
+  //console.log("${contextPath}");
   $('input#searchId').keyup( function() {
+
      if( this.value.length < 3 ) return;
         var queryStr=this.value;
-       // var entity_type="city";
+        var search = {"q":queryStr};
+       var prefix = "${contextPath}";
+       console.log("------------->>>>>>>>>",prefix);
+       var link="restaurant/search";
+       var url = prefix.concat(link);
         $.ajax({
-          url: "https://developers.zomato.com/api/v2.1/search",
-          type: "get",
-          data: {
-            entity_type: "city",
-            q:queryStr
-          },
-          beforeSend: function(xhr){
-                                     xhr.setRequestHeader("user-key", "96b91246acf06fe50ccd86fe5d4514a1");
-                                     xhr.setRequestHeader("Accept", "application/json");
-                            },
+          url:url,
+          type: "post",
+
+          contentType: "application/json",
+          data: JSON.stringify(search),
+           datatype : "json",
           success: function(response) {
-           console.log(response);
+          $('#restaurant-search-results').empty();
+            $('#restaurant-search-results').html(response);
           },
           error: function(xhr) {
             console.log(xhr);
