@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.jws.WebParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
@@ -38,11 +39,18 @@ public class RestaurantSearch {
         if(restaurantResponse!=null){
             restaurantsList = restaurantResponse.getRestaurants();
         }
+        restaurantService.saveRestaurantData(restaurantResponse);
         model.addAttribute("restaurants",restaurantsList);
         //logger.info("respaonse{}",responseEntity.getBody());
         //ModelAndView mav = new ModelAndView("search-result");
         return "search-result";
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/restaurant-details/{res_id}")
+    public String getRestuarantDetails(@PathVariable("res_id") String res_id,Model model){
+        Restaurants restaurants=restaurantService.getRestaurantById(res_id);
+        model.addAttribute("restaurant",restaurants);
+        return "restaurant-details";
+    }
 
 }

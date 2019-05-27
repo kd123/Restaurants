@@ -1,10 +1,14 @@
 package com.restaurant.model;
 
+import javax.persistence.*;
+
 /**
  * @author Kuldeep Gupta
  */
-
+@Entity
+@Table(name = "restaurants")
 public class Restaurants {
+    @Id
     private String id;
     private String name;
     private String url;
@@ -12,6 +16,8 @@ public class Restaurants {
     private String cuisines;
     private String average_cost_for_two;
     private UserRatingInfo user_rating;
+    @Embedded
+    private Address locality;
 
     public String getId() {
         return id;
@@ -67,5 +73,13 @@ public class Restaurants {
 
     public void setUser_rating(UserRatingInfo user_rating) {
         this.user_rating = user_rating;
+    }
+
+    public Address getLocality() {
+        return locality;
+    }
+
+    public void setLocality(Address locality) {
+        this.locality = locality;
     }
 }

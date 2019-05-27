@@ -75,13 +75,18 @@ body {
     font-size: initial;
     color: #cb202d;
     font-weight: 600;
-    }
+    line-height:50px;
+}
+.name:hover{
+}
 .cuisines{
         font-style: italic;
         font-size: 15px;
         color: darkslategray;
 }
-
+.picture{
+    margin-top:15px;
+}
 .rating{
     color: white;
     width: 40px;
@@ -91,17 +96,21 @@ body {
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 10px;
-    margin-top: 10px;
-    padding-top: 2px;
+
+    padding-top: 5px;
 }
 .votes{
-    line-height: 5px;
     color: lightslategray;
     font-size: 12px;
 }
 
- .col-md-4.res_details{
-        width: 18%;
+.col-md-5.res_details{
+        width: 60%;
+        margin-left:25px;
+}
+
+.res_details div{
+    line-height:28px;
 }
 
 
@@ -110,7 +119,7 @@ fieldset, label { margin: 0; padding: 0; }
 body{ margin: 20px; }
 h1 { font-size: 1.5em; margin: 10px; }
 
-/****** Style Star Rating Widget *****/
+
 
 .restaurant_rating {
   border: none;
@@ -133,16 +142,14 @@ h1 { font-size: 1.5em; margin: 10px; }
 
 .restaurant_rating > label {
   color: #ddd;
- float: right;
+  float: right;
 }
 
-/***** Stars on Hover *****/
+.restaurant_rating > input:checked ~ label,
+.restaurant_rating:not(:checked) > label:hover,
+.restaurant_rating:not(:checked) > label:hover ~ label { color: #FFD700;  }
 
-.restaurant_rating > input:checked ~ label, /* show gold star when clicked */
-.restaurant_rating:not(:checked) > label:hover, /* hover current star */
-.restaurant_rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
-
-.restaurant_rating > input:checked + label:hover, /* hover current star when changing rating */
+.restaurant_rating > input:checked + label:hover,
 .restaurant_rating > input:checked ~ label:hover,
-.restaurant_rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.restaurant_rating > label:hover ~ input:checked ~ label,
 .restaurant_rating > input:checked ~ label:hover ~ label { color: #FFED85;  }

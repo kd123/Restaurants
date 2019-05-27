@@ -4,6 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib  uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
   <div class="restaurant-search-results">
      		<div class="panel panel-default">
      			<div class="panel-heading">Result</div>
@@ -12,32 +13,41 @@
                    	<c:when test="${not empty restaurants}">
 					<table style="table-layout: fixed"
                     							class="table table-hover table-bordered">
-                    							<tr>
-                    								<th class="text-center">Restaurant Info</th>
+                    							<tr >
+                    								<th colspan="2" class="text-center">Restaurant Info</th>
                     							</tr>
                     							<c:forEach items="${restaurants}" var="restaurant" varStatus="loop">
                     							<c:set value="${restaurant}" var="restaurantvalues"></c:set>
+                                                    <c:if test="${loop.count % 2 == 1}">
                                                     <tr>
+                                                    </c:if>
+
                                                         <td>
-                                                            <div class="form-group col-md-4 res_details">
+                                                        <a href="${contextPath}/restaurant/restaurant-details/${restaurant.id}" target="_blank">
+                                                            <div class="form-group col-md-4">
                                                                 <img class= "picture" src="${restaurant.thumb}" width="250px" height="150">
                                                             </div>
-                                                            <div class="form-group col-md-5">
+                                                            <div class="form-group col-md-5 res_details">
                                                                 <div class= "name">${restaurant.name}</div>
-                                                                <div class= "cuisines">Cusines: ${restaurant.cuisines}</div>
                                                                 <div class= "rating"
-                                                                        style="background-color:#${restaurant.user_rating.rating_color};"
-                                                                        data-toggle="popover" data-trigger="hover" data-content="${restaurant.user_rating.rating_text}">${restaurant.user_rating.aggregate_rating}</div>
+                                                                style="background-color:#${restaurant.user_rating.rating_color};float:right;"
+                                                                data-toggle="popover" data-trigger="hover" data-content="${restaurant.user_rating.rating_text}">${restaurant.user_rating.aggregate_rating}</div>
+
+                                                                <div class= "cuisines">Cusines: ${restaurant.cuisines}</div>
 
                                                                 <div class= "votes">Votes: ${restaurant.user_rating.votes}</div>
+                                                                <div class= "votes">Rs. ${restaurant.average_cost_for_two} for two people (approx.) </div>
                                                                 <div class= "url"><a href="${restaurant.url}" target="_blank">Open with Zomato</a></div>
 
                                                             </div>
                                                             <div class="form-group col-md-3 otherInfo">
                                                             </div>
+                                                             </a>
                                                         </td>
-                                                    </tr>
 
+                                                        <c:if test="${loop.count % 2 == 0||loop.count == fn:length(values)}">
+                                                    </tr>
+                                                    </c:if>
                     							</c:forEach>
                     						</table>
 

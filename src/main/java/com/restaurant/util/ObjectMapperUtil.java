@@ -1,9 +1,11 @@
 package com.restaurant.util;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.restaurant.model.Address;
 import com.restaurant.model.RestaurantResponse;
 import com.restaurant.model.Restaurants;
 import com.restaurant.model.UserRatingInfo;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,9 +36,10 @@ public class ObjectMapperUtil {
         restaurants.setCuisines(jsonNode.get("cuisines").asText());
         restaurants.setName(jsonNode.get("name").asText());
         restaurants.setAverage_cost_for_two(jsonNode.get("average_cost_for_two").asText());
-        restaurants.setThumb(jsonNode.get("thumb").asText());
+        restaurants.setThumb(StringUtils.isEmpty(jsonNode.get("thumb").asText())?"/resources/image/default.jpg":jsonNode.get("thumb").asText());
         restaurants.setUrl(jsonNode.get("url").asText());
         restaurants.setUser_rating(getUserRatingInfo(jsonNode.get("user_rating")));
+        restaurants.setLocality(getAddressInfo(jsonNode.get("location")));
         return restaurants;
     }
 
@@ -47,5 +50,14 @@ public class ObjectMapperUtil {
         userRatingInfo.setVotes(jsonNode.get("votes").asText());
         userRatingInfo.setRating_text(jsonNode.get("rating_text").asText());
         return userRatingInfo;
+    }
+
+    private static Address getAddressInfo(JsonNode addressJson){
+        Address address = new Address();
+        address.setAddress(addressJson.get("address").asText());
+        address.setCity(addressJson.get("city").asText());
+        address.setLocality(addressJson.get("locality").asText());
+        return address;
+
     }
 }

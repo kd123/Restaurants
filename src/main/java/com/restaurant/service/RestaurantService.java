@@ -1,6 +1,7 @@
 package com.restaurant.service;
 
 import com.restaurant.model.RestaurantResponse;
+import com.restaurant.model.Restaurants;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
@@ -15,4 +16,8 @@ import java.util.Map;
 public interface RestaurantService {
 
     public RestaurantResponse searchRestaurant(Map<String,String> req);
+
+    public void saveRestaurantData(RestaurantResponse restaurantResponse);
+
+    public Restaurants getRestaurantById(String resId);
 }
