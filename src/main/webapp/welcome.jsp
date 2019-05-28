@@ -30,9 +30,7 @@
      			<div class="panel-body">
                     <div id="view-org-msg"></div>
                     <div id="view-org-form">
-                        <form class="form-inline ajax" action="restaurant/search"
-                                            method="get" data-error="#view-org-msg"
-                                            data-spinner="#form-spinner" data-replace="#restaurant-search-results">
+
                                 <div class="panel-body" style="padding-top: 0">
                                     <div class="row">
                                         <div class="form-group col-md-3">
@@ -47,8 +45,7 @@
 
                                     </div>
                                 </div>
-                                <div id="form-spinner"></div>
-                        </form>
+
                     </div>
      			</div>
      		</div>
