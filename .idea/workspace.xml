@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6b73a193-89b2-4641-9d16-34e078cc1ac7" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant/model/UserRating.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant/repository/UserRatingRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurant/service/RestaurantServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurant/service/RestaurantServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurant/service/UserRatingInfoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurant/service/UserRatingInfoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurant/service/UserRatingInfoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurant/service/UserRatingInfoServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurant/web/RestaurantSearch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurant/web/RestaurantSearch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/common.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/common.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/restaurant-details.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/restaurant-details.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/search-result.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/search-result.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/restaurant/service/UserRatingInfoServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/restaurant/service/UserRatingInfoServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/restaurant/web/RestaurantSearch.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/restaurant/web/RestaurantSearch.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -41,8 +30,8 @@
       <file leaf-file-name="UserRatingInfoServiceImpl.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/restaurant/service/UserRatingInfoServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="562">
-              <caret line="89" column="45" lean-forward="true" selection-start-line="89" selection-start-column="45" selection-end-line="89" selection-end-column="45" />
+            <state relative-caret-position="-44">
+              <caret line="66" column="33" lean-forward="true" selection-start-line="66" selection-start-column="33" selection-end-line="66" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -178,8 +167,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/restaurant/repository/UserRatingRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/restaurant/service/UserRatingInfoService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/restaurant/service/RestaurantServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/restaurant/service/UserRatingInfoServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/restaurant/web/RestaurantSearch.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/restaurant/service/UserRatingInfoServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -706,7 +695,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/restaurant/service/UserRatingInfoServiceImpl.java</url>
-          <line>67</line>
+          <line>66</line>
           <properties />
           <option name="timeStamp" value="16" />
         </line-breakpoint>
@@ -1184,8 +1173,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/restaurant/service/UserRatingInfoServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="562">
-          <caret line="89" column="45" lean-forward="true" selection-start-line="89" selection-start-column="45" selection-end-line="89" selection-end-column="45" />
+        <state relative-caret-position="-44">
+          <caret line="66" column="33" lean-forward="true" selection-start-line="66" selection-start-column="33" selection-end-line="66" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

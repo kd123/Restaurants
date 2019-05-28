@@ -64,7 +64,6 @@ public class UserRatingInfoServiceImpl implements UserRatingInfoService {
             }
         }
         restaurants=restaurantsOptional.get();
-       // if(userRatingInfo.isPresent()){
             if(userRating!=null){
                 usrInfo=userRatingInfo.get();
                 rating=Double.parseDouble(usrInfo.getAggregate_rating());
@@ -73,6 +72,7 @@ public class UserRatingInfoServiceImpl implements UserRatingInfoService {
                 ratingFromUser=Double.parseDouble(map.get("rating"));
                 aggregaterating=((totalRate+ratingFromUser)/numberOfVoters)%6;
                 usrInfo.setAggregate_rating(String.valueOf(aggregaterating));
+                usrInfo=setColorAndRatingText(usrInfo);
                 userRatingInfoRepository.save(usrInfo);
                 restaurants.setUser_rating(usrInfo);
                 restaurantRepository.save(restaurants);
@@ -86,6 +86,7 @@ public class UserRatingInfoServiceImpl implements UserRatingInfoService {
                 aggregaterating = ((totalRate + ratingFromUser) / (numberOfVoters+1)) % 6;
                 usrInfo.setAggregate_rating(String.valueOf(aggregaterating));
                 usrInfo.setVotes(String.valueOf(numberOfVoters+1));
+                usrInfo=setColorAndRatingText(usrInfo);
                 userRating=new UserRating();
                 userRating.setUserId(userId);
                 userRating.setRatingId(Long.valueOf(ratingId));
@@ -95,41 +96,6 @@ public class UserRatingInfoServiceImpl implements UserRatingInfoService {
                 restaurantRepository.save(restaurants);
                 return usrInfo;
             }
-//        }else {
-//            usrInfo.setAggregate_rating(map.get("rating"));
-//            usrInfo.setVotes("1");
-//            usrInfo.setResId(map.get("res_id"));
-//            double colorRate=Double.parseDouble(map.get("rating"));
-//            String color="";
-//            String ratingtext="";
-//            if(colorRate>=0 && colorRate<=0.5){
-//                color=Color.gray.name();
-//                ratingtext="Not Rated";
-//            }else if(colorRate>=0.5 && colorRate<1){
-//                color=Color.yellow.name();
-//                ratingtext="Average";
-//            }else if(colorRate>=1 && colorRate<2){
-//                color=Color.lightgreen.name();
-//                ratingtext="Average";
-//            }else if(colorRate>=2 && colorRate<3){
-//                color=Color.lightgreen.name();
-//                ratingtext="Good";
-//            }else if(colorRate>=3 && colorRate<4){
-//                color=Color.green.name();
-//                ratingtext="Very Good";
-//            }else if(colorRate>=4 && colorRate<=5) {
-//                color = Color.darkgreen.name();
-//                ratingtext="Excellent";
-//            }
-//                usrInfo.setRating_color(color);
-//            usrInfo.setRating_text(ratingtext);
-//            userRatingInfoRepository.save(usrInfo);
-//            usrInfo=userRatingInfoRepository.findByResId(map.get("res_id"));
-//            restaurants.setUser_rating(usrInfo);
-//            restaurantRepository.save(restaurants);
-//            return usrInfo;
-//        }
-
     }
 
     @Override
@@ -138,5 +104,35 @@ public class UserRatingInfoServiceImpl implements UserRatingInfoService {
         userRating.setRatingId(rateId);
         userRating.setUserId(uId);
         userRatingRepository.save(userRating);
+    }
+
+    private UserRatingInfo setColorAndRatingText(UserRatingInfo userRatingInfo){
+
+        double colorRate=Double.parseDouble(userRatingInfo.getAggregate_rating());
+            String color="";
+            String ratingtext="";
+            if(colorRate>=0 && colorRate<=0.5){
+                color=Color.gray.name();
+                ratingtext="Not Rated";
+            }else if(colorRate>=0.5 && colorRate<1){
+                color=Color.yellow.name();
+                ratingtext="Average";
+            }else if(colorRate>=1 && colorRate<2){
+                color=Color.lightgreen.name();
+                ratingtext="Average";
+            }else if(colorRate>=2 && colorRate<3){
+                color=Color.lightgreen.name();
+                ratingtext="Good";
+            }else if(colorRate>=3 && colorRate<4){
+                color=Color.green.name();
+                ratingtext="Very Good";
+            }else if(colorRate>=4 && colorRate<=5) {
+                color = Color.darkgreen.name();
+                ratingtext="Excellent";
+            }
+            userRatingInfo.setRating_color(color);
+            userRatingInfo.setRating_text(ratingtext);
+            return userRatingInfo;
+
     }
 }
