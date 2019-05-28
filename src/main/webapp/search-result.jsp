@@ -40,8 +40,7 @@
                                                                 <div class= "url"><a href="${restaurant.url}" target="_blank">Open with Zomato</a></div>
 
                                                             </div>
-                                                            <div class="form-group col-md-3 otherInfo">
-                                                            </div>
+
                                                              </a>
                                                         </td>
 

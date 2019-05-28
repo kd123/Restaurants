@@ -16,6 +16,7 @@ com/restaurant/model/User.class
 com/restaurant/model/Restaurants.class
 com/restaurant/service/UserRatingInfoServiceImpl.class
 com/restaurant/service/SecurityServiceImpl.class
+com/restaurant/repository/UserRatingRepository.class
 com/restaurant/web/RestaurantSearch.class
 com/restaurant/service/SecurityService.class
 com/restaurant/model/RestaurantResponse.class
@@ -24,4 +25,5 @@ com/restaurant/model/UserRatingInfo.class
 com/restaurant/repository/RoleRepository.class
 com/restaurant/WebSecurityConfig.class
 com/restaurant/validator/UserValidator.class
+com/restaurant/model/UserRating.class
 com/restaurant/util/RestTempateUtil.class

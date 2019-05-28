@@ -24,7 +24,7 @@
         </c:if>
      </div>
   <div class="container searchContainer">
-  <div class="restaurant-search-results">
+  <div class="restaurant-rating-results">
      		<div class="panel panel-default">
      			<div class="panel-heading">Restuarant Details</div>
      			<div class="panel-body">
@@ -101,6 +101,29 @@
             console.log("Radio---->"+radioValue);
             console.log("---->"+id);
             console.log(">>>>"+resId);
+            var prefix = "${contextPath}";
+            console.log("------------->>>>>>>>>"+prefix);
+            var link="/restaurant/rating";
+            var url = prefix.concat(link);
+             console.log("------------->>>>>>>>>"+url);
+            var search = {"id":id,
+                           "res_id":resId,
+                           "rating":radioValue};
+             $.ajax({
+                      url:url,
+                      type: "post",
+
+                      contentType: "application/json",
+                      data: JSON.stringify(search),
+                       datatype : "json",
+                      success: function(response) {
+                      $('#restaurant-rating-results').empty();
+                        $('#restaurant-rating-results').html(response);
+                      },
+                      error: function(xhr) {
+                        console.log(xhr);
+                      }
+                    });
         });
       </script>
    </body>

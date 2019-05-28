@@ -9,6 +9,7 @@
 /home/kuldeepgupta/Desktop/restaurant/src/main/java/com/restaurant/model/Restaurants.java
 /home/kuldeepgupta/Desktop/restaurant/src/main/java/com/restaurant/model/Role.java
 /home/kuldeepgupta/Desktop/restaurant/src/main/java/com/restaurant/repository/UserRatingInfoRepository.java
+/home/kuldeepgupta/Desktop/restaurant/src/main/java/com/restaurant/repository/UserRatingRepository.java
 /home/kuldeepgupta/Desktop/restaurant/src/main/java/com/restaurant/service/RestaurantService.java
 /home/kuldeepgupta/Desktop/restaurant/src/main/java/com/restaurant/WebApplication.java
 /home/kuldeepgupta/Desktop/restaurant/src/main/java/com/restaurant/web/UserController.java
@@ -25,3 +26,4 @@
 /home/kuldeepgupta/Desktop/restaurant/src/main/java/com/restaurant/service/UserService.java
 /home/kuldeepgupta/Desktop/restaurant/src/main/java/com/restaurant/repository/RestaurantRepository.java
 /home/kuldeepgupta/Desktop/restaurant/src/main/java/com/restaurant/model/Address.java
+/home/kuldeepgupta/Desktop/restaurant/src/main/java/com/restaurant/model/UserRating.java

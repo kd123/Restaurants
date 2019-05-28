@@ -6,6 +6,7 @@ import com.restaurant.model.RestaurantResponse;
 import com.restaurant.model.Restaurants;
 import com.restaurant.model.UserRatingInfo;
 import com.restaurant.repository.RestaurantRepository;
+import com.restaurant.repository.UserRatingInfoRepository;
 import com.restaurant.util.ObjectMapperUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,6 +41,9 @@ public class RestaurantServiceImpl implements RestaurantService{
 
     @Autowired
     RestaurantRepository restaurantRepository;
+
+    @Autowired
+    UserRatingInfoRepository userRatingInfoRepository;
 
     private static final Logger logger = LoggerFactory.getLogger(RestaurantServiceImpl.class);
 
@@ -84,21 +88,24 @@ public class RestaurantServiceImpl implements RestaurantService{
     public void saveRestaurantData(RestaurantResponse restaurantResponse) {
         Restaurants restaurants = new Restaurants();
         for(Restaurants res : restaurantResponse.getRestaurants()){
-            restaurants.setId(res.getId());
-            restaurants.setName(res.getName());
-            restaurants.setThumb(res.getThumb());
-            restaurants.setCuisines(res.getCuisines());
-            restaurants.setAverage_cost_for_two(res.getAverage_cost_for_two());
-            restaurants.setLocality(res.getLocality());
-            UserRatingInfo userRatingInfo = new UserRatingInfo();
-            userRatingInfo.setRating_text("Not Rated");
-            userRatingInfo.setRating_color(Color.gray.name());
-            userRatingInfo.setResId(res.getId());
-            userRatingInfo.setVotes("0");
-            userRatingInfo.setAggregate_rating("0");
-            restaurants.setUser_rating(userRatingInfo);
-            restaurantRepository.save(restaurants);
-
+            Optional<Restaurants> resFromDb=restaurantRepository.findById(res.getId());
+            if(!resFromDb.isPresent()) {
+                restaurants.setId(res.getId());
+                restaurants.setName(res.getName());
+                restaurants.setThumb(res.getThumb());
+                restaurants.setCuisines(res.getCuisines());
+                restaurants.setAverage_cost_for_two(res.getAverage_cost_for_two());
+                restaurants.setLocality(res.getLocality());
+                UserRatingInfo userRatingInfo = new UserRatingInfo();
+                userRatingInfo.setRating_text("Not Rated");
+                userRatingInfo.setRating_color(Color.gray.name());
+                userRatingInfo.setResId(res.getId());
+                userRatingInfo.setVotes("0");
+                userRatingInfo.setAggregate_rating("0");
+                userRatingInfo = userRatingInfoRepository.save(userRatingInfo);
+                restaurants.setUser_rating(userRatingInfo);
+                restaurantRepository.save(restaurants);
+            }
         }
     }
 

@@ -14,7 +14,9 @@ public interface UserRatingInfoService {
 
     public UserRatingInfo getUserRatingInfo(String resId);
 
-    public void saveUserRatingInfo(Map<String,String> map);
+    public UserRatingInfo saveUserRatingInfo(Map<String,String> map,long userId);
+
+    public void saveUserAndRatingIds(long userId,long ratingId);
 
 
 }
